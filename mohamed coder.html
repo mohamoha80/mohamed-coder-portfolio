@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mouhamed coder</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+        
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #1a252f;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header & Logo */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, var(--secondary), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 24px;
+            animation: rotate 10s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        .logo-text span {
+            color: var(--secondary);
+        }
+        
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        nav a:hover {
+            color: var(--secondary);
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        /* Section General Styles */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--primary);
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        /* About Section */
+        #about {
+            background-color: white;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+        
+        .photo-container {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+        
+        .photo-frame {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto;
+            border: 8px solid var(--light);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            position: relative;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .about-text {
+            flex: 2;
+            min-width: 300px;
+        }
+        
+        .about-text h3 {
+            font-size: 32px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .about-text p {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 25px;
+            text-align: justify;
+        }
+        
+        /* Skills */
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .skill-tag {
+            background-color: var(--light);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            color: var(--primary);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .skill-tag:hover {
+            background-color: var(--secondary);
+            color: white;
+            transform: translateY(-5px);
+        }
+        
+        /* Projects Section */
+        #projects {
+            background-color: var(--light);
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .project-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .project-img {
+            height: 200px;
+            background-color: #ddd;
+            overflow: hidden;
+        }
+        
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .project-card:hover .project-img img {
+            transform: scale(1.05);
+        }
+        
+        .project-content {
+            padding: 25px;
+        }
+        
+        .project-content h3 {
+            font-size: 22px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .project-content p {
+            color: #666;
+            margin-bottom: 20px;
+            height: 80px;
+            overflow: hidden;
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+        
+        .tech-tag {
+            background-color: var(--light);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            color: var(--primary);
+        }
+        
+        .demo-btn {
+            display: inline-block;
+            background: linear-gradient(to right, var(--secondary), var(--accent));
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .demo-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+        }
+        
+        /* Social Media Section */
+        #social {
+            background-color: white;
+        }
+        
+        .social-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .social-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            color: white;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            cursor: pointer;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-10px) scale(1.1);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .facebook {
+            background-color: #3b5998;
+        }
+        
+        .twitter {
+            background-color: #1da1f2;
+        }
+        
+        .linkedin {
+            background-color: #0077b5;
+        }
+        
+      .tiktok {
+        background-color: #1a252f;
+      }
+        
+        .instagram {
+            background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+        }
+        
+      
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                gap: 15px;
+            }
+            
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .skills {
+                justify-content: center;
+            }
+            
+            .projects-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+            
+            .social-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 30px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 20px;
+            }
+            
+            nav a {
+                font-size: 16px;
+            }
+            
+            .section-title h2 {
+                font-size: 28px;
+            }
+            
+            .project-card {
+                min-width: 100%;
+            }
+            
+            .social-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container header-content">
+            <div class="logo-container">
+                <div class="logo">mc</div>
+                <div class="logo-text">mouhamed<span>coder</span></div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#about">من أنا</a></li>
+                    <li><a href="#projects">المشاريع</a></li>
+                    <li><a href="#social">وسائل التواصل</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>about</h2>
+            </div>
+            <div class="about-content">
+                <div class="photo-container">
+                    <div class="photo-frame">
+                        <!-- Replace with your actual photo -->
+                        <img src="https://mathematical-brown-y47znpsqt2.edgeone.app/de4240fa-559d-41f7-a72e-bd0d4bc08d81.png" alt="صورة المطور">
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h3>مرحباً،  محمد</h3>
+                    <p>أنا مطور واجهات أمامية ووردبريس محترف مع أكثر من3 سنوات من الخبرة في تصميم وتطوير مواقع ويب تفاعلية وجذابة. أتخصص في تحويل الأفكار الإبداعية إلى مواقع ويب وظيفية وسريعة الاستجابة.</p>
+                    <p>أعمل على أحدث تقنيات الويب مثل HTML5, tailwindcss, JavaScript, React.js node js بالإضافة إلى تطوير قوالب ووردبريس مخصصة وإضافات متوافقة مع معايير الويب الحديثة. أهتم بتجربة المستخدم وأحرص على تقديم حلول تقنية تلبي توقعات العملاء.</p>
+                    
+                    <div class="skills">
+                        <div class="skill-tag">HTML5</div>
+                        <div class="skill-tag">tailwindcss</div>
+                        <div class="skill-tag">JavaScript</div>
+                        <div class="skill-tag">React.js</div>
+                        <div class="skill-tag">WordPress</div>
+                        <div class="skill-tag">PHP</div>
+                        <div class="skill-tag">Node.js</div>
+                         <div class="skill-tag">database</div>
+                        <div class="skill-tag">UI/UX Design</div>
+                        <div class="skill-tag">Responsive Design</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>المشاريع</h2>
+            </div>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://tame-blush-oiqgcoxlp2.edgeone.app/Screenshot%202025-12-17%20182149.png" alt="متجر إلكتروني">
+                    </div>
+                    <div class="project-content">
+                        <h3>متجر إلكتروني</h3>
+                        <p>متجر إلكتروني متكامل مبني باستخدام ووردبريس و WooCommerce، مع تصميم عصري وسهل الاستخدام. يحتوي على نظام دفع آمن وإدارة مخزون متقدمة.</p>
+                        <div class="project-tech">
+                            <div class="tech-tag">WordPress</div>
+                            <div class="tech-tag">WooCommerce</div>
+                            <div class="tech-tag">PHP</div>
+    
+                        </div>
+                        <a href="https://mohamoha80.github.io/shopping/" target="_blank" class="demo-btn">زيارة الموقع التجريبي</a>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80" alt="محفظة أعمال">
+                    </div>
+                    <div class="project-content">
+                        <h3>محفظة أعمال (portfolio) </h3>
+                        <p>تصميم محفظة أعمال تفاعلية لعرض الأعمال السابقة والمهارات الشخصية. تحتوي على رسوم متحركة جذابة وتصميم متجاوب مع جميع الأجهزة.</p>
+                        <div class="project-tech">
+                            <div class="tech-tag">HTML5</div>
+                            <div class="tech-tag">CSS3</div>
+                            <div class="tech-tag">JavaScript</div>
+                            <div class="tech-tag">GSAP</div>
+                        </div>
+                        <a href="https://example.com" target="_blank" class="demo-btn">زيارة الموقع التجريبي</a>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80" alt="مدونة شخصية">
+                    </div>
+                    <div class="project-content">
+                        <h3>مدونة شخصية</h3>
+                        <p>تصميم وتطوير مدونة شخصية باستخدام ووردبريس مع نظام إدارة محتوى متكامل. تتضمن تصميماً مخصصاً وتحسينات لأداء محركات البحث.</p>
+                        <div class="project-tech">
+                            <div class="tech-tag">WordPress</div>
+                            <div class="tech-tag">html</div>
+                            <div class="tech-tag">SEO</div>
+                            <div class="tech-tag">JavaScript</div>
+                        </div>
+                        <a href="https://mohamoha80.github.io/modawana/" target="_blank" class="demo-btn">زيارة الموقع التجريبي</a>
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://parallel-cyan-o3zkk33z0n.edgeone.app/Screenshot%202025-12-23%20102523.png" alt="لوحة تحكم إدارية">
+                    </div>
+                    <div class="project-content">
+                        <h3>موقع لعيادة طبية خاصة</h3>
+                        <p>موقع عيادة طبية بتصميم نظيف وسهل التصفح يعرّف بخدمات العيادة والأطباء ويعرض معلومات التواصل والموقع بشكل واضح.</p>
+                        <div class="project-tech">
+                            <div class="tech-tag">React.js</div>
+                            <div class="tech-tag">tailwindcss</div>
+                            <div class="tech-tag">API</div>
+                            <div class="tech-tag">database</div>
+                               <div class="tech-tag">tailwindcss</div>
+                        </div>
+                        <a href="https://mohamoha80.github.io/hosptal/" target="_blank" class="demo-btn">زيارة الموقع التجريبي</a>
+                    </div>
+                </div>
+                
+                <!-- Project 5 -->
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://classic-sapphire-qzn01esf94.edgeone.app/Screenshot%202025-12-23%20093511.png" alt="موقع شركة">
+                    </div>
+                    <div class="project-content">
+                        <h3>موقع الكتروني لعرض الحلويات و كايك </h3>
+                        <p>موقع لعرض الحلويات والكيك بتصميم أنيق يبرز الصور والمنتجات بطريقة شهية ومنظمة، مع أقسام للكيك، الكب كيك، التارت،</p>
+                        <div class="project-tech">
+                       
+                            <div class="tech-tag">html</div>
+                            <div class="tech-tag">JavaScript</div>
+                            <div class="tech-tag">tailwindcss</div>
+                        </div>
+                        <a href="https://mohamoha80.github.io/cake/" target="_blank" class="demo-btn">زيارة الموقع التجريبي</a>
+                    </div>
+                </div>
+                
+                <!-- Project 6 -->
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://acute-pink-utqhycl0mv.edgeone.app/Screenshot%202025-12-17%20171357.png" alt="تطبيق ويب">
+                    </div>
+                    <div class="project-content">
+                        <h3>موقع الكتروني لمطعم </h3>
+                        <p>موقع الكتروني لمطعم مخصص لعرض الأطعمة والمشروبات وتقديم خدمة الحجز عبر الإنترنت. يتضمن نظام إدارة محتوى سهل الاستخدام لإضافة وتعديل الأطعمة والأسعار.</p>
+                        <div class="project-tech">
+                            <div class="tech-tag">WordPress</div>
+                            <div class="tech-tag">html</div>
+                            <div class="tech-tag">JavaScript</div>
+                            <div class="tech-tag">tailwindcss</div>
+                        </div>
+                        <a href="https://mohamoha80.github.io/restaurent/" target="_blank" class="demo-btn">زيارة الموقع التجريبي</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section id="social">
+        <div class="container">
+            <div class="section-title">
+                <h2>وسائل التواصل</h2>
+            </div>
+            <div class="social-container">
+                <a href="https://www.facebook.com/mohamed.vent.2025" target="_blank" class="social-icon facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://x.com/Mouhame45965837" target="_blank" class="social-icon twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/mouhamed-lattafi-b46993349/" target="_blank" class="social-icon linkedin">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+             
+                <a href="https://www.instagram.com/mouhamed_coder/" target="_blank" class="social-icon instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+               
+                <a href="https://www.tiktok.com/@mohamed_coder" target="_blank" class="social-icon tiktok">
+                  <i class="fab fa-tiktok-tik"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2026 جميع الحقوق محفوظة |  مطور الواجهة الأمامية ووردبريس</p>
+            <p>البريد الإلكتروني:mohussma8@gmai.com | الهاتف: 0541558725</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Animate project cards on scroll
+        const projectCards = document.querySelectorAll('.project-card');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        projectCards.forEach(card => {
+            observer.observe(card);
+        });
+
+        // Add animation delay to project cards
+        projectCards.forEach((card, index) => {
+            card.style.transitionDelay = `${index * 0.1}s`;
+        });
+
+        // Add click animation to buttons
+        const buttons = document.querySelectorAll('.demo-btn');
+        buttons.forEach(button => {
+            button.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 200);
+            });
+        });
+
+        // Add hover effect to social media icons
+        const socialIcons = document.querySelectorAll('.social-icon');
+        socialIcons.forEach(icon => {
+            icon.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.1)';
+            });
+            
+            icon.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
